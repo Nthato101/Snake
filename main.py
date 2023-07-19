@@ -22,6 +22,7 @@ game_on = True
 
 while game_on:
 
+
     window.update()
     time.sleep(0.1)
     snake.move()
@@ -37,12 +38,12 @@ while game_on:
         snake.extend_body()
 
     if snake.head.xcor() > 495 or snake.head.xcor() < -495 or snake.head.ycor() > 370 or snake.head.ycor() < -370:
-        scoreboard.game_over()
+        scoreboard.high_score_update()
         game_on = False
 
     for index in range(1, len(snake_body)-1):
         if snake.head.distance(snake_body[index]) < 10:
-            scoreboard.game_over()
+            scoreboard.high_score_update()
             game_on = False
 
 window.exitonclick()
