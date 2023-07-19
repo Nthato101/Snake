@@ -60,8 +60,10 @@ class Snake:
         new_piece.goto(self.body[-1].position())
         self.body.append(new_piece)
 
-
-
-
-
-
+    def reset(self):
+        for i in range(len(self.body)-1, 0, -1):
+            self.body[i].goto(x=3000, y=3000)
+            self.body[i].clear()
+        del self.body[3:len(self.body)-1]
+        self.head.home()
+        self.move()

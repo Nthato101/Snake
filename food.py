@@ -7,14 +7,11 @@ class Food(Turtle):
         super().__init__()
         self.shape("circle")
         self.penup()
-        self.shapesize(stretch_wid=0.5,stretch_len=0.5)
+        self.shapesize(stretch_wid=0.5, stretch_len=0.5)
         self.color("blue")
-        self.placement = self.new_food()
+        self.new_food()
 
     def new_food(self):
-        x = random.randrange(-470,470)
-        y = random.randrange(-365,365)
-        coordinate = self.goto(x=x,y=y)
-        return coordinate
-
-
+        x = random.randrange(-470, 470)
+        y = random.randrange(-365, 365)
+        self.goto(x=x, y=y)

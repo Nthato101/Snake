@@ -10,8 +10,6 @@ window.bgcolor("black")
 window.title("SnakeGame")
 window.tracer(0)
 
-# def extend_body(list):
-
 snake = Snake()
 snake_body = snake.body
 food = Food()
@@ -22,15 +20,14 @@ game_on = True
 
 while game_on:
 
-
     window.update()
     time.sleep(0.1)
     snake.move()
     window.listen()
     window.onkey(key="Up", fun=snake.move_up)
-    window.onkey(key="Down",fun=snake.move_down)
-    window.onkey(key="Left",fun=snake.move_left)
-    window.onkey(key="Right",fun=snake.move_right)
+    window.onkey(key="Down", fun=snake.move_down)
+    window.onkey(key="Left", fun=snake.move_left)
+    window.onkey(key="Right", fun=snake.move_right)
 
     if snake.head.distance(food) < 15:
         food.new_food()
@@ -39,11 +36,11 @@ while game_on:
 
     if snake.head.xcor() > 495 or snake.head.xcor() < -495 or snake.head.ycor() > 370 or snake.head.ycor() < -370:
         scoreboard.high_score_update()
-        game_on = False
+        snake.reset()
 
     for index in range(1, len(snake_body)-1):
         if snake.head.distance(snake_body[index]) < 10:
             scoreboard.high_score_update()
-            game_on = False
+            snake.reset()
 
 window.exitonclick()
